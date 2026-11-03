@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Worker Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#72fe88",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-bright": "#fcf8fb",
+                        "on-error-container": "#93000a",
+                        "secondary": "#006e28",
+                        "on-background": "#1b1b1d",
+                        "error": "#ba1a1a",
+                        "surface": "#fcf8fb",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#00732a",
+                        "tertiary-fixed": "#e2dfff",
+                        "on-secondary-fixed-variant": "#00531c",
+                        "surface-dim": "#dcd9dc",
+                        "on-secondary-fixed": "#002107",
+                        "on-primary-fixed-variant": "#004493",
+                        "surface-container-low": "#f6f3f5",
+                        "surface-container": "#f0edef",
+                        "inverse-primary": "#adc6ff",
+                        "inverse-on-surface": "#f3f0f2",
+                        "background": "#fcf8fb",
+                        "primary-container": "#0070eb",
+                        "primary": "#0058bc",
+                        "on-surface": "#1b1b1d",
+                        "on-primary-fixed": "#001a41",
+                        "secondary-fixed-dim": "#53e16f",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e4e2e4",
+                        "surface-container-high": "#eae7ea",
+                        "outline-variant": "#c1c6d7",
+                        "inverse-surface": "#303032",
+                        "surface-tint": "#005bc1",
+                        "outline": "#717786",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#c2c1ff",
+                        "on-surface-variant": "#414755",
+                        "tertiary": "#4c4aca",
+                        "tertiary-container": "#6664e4",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#fefcff",
+                        "on-tertiary-fixed": "#0c006a",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#6ffb85",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-tertiary-fixed-variant": "#3631b4",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#fffbff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "touch-target-min": "44px",
+                        "margin-mobile": "20px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "h2": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "h3": ["Inter"],
+                        "h1": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["15px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display": ["34px", {"lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["17px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-bold": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "h3": ["20px", {"lineHeight": "25px", "letterSpacing": "0em", "fontWeight": "600"}],
+                        "h1": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased pb-24">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-5 h-16 w-full bg-white/70 backdrop-blur-xl docked full-width top-0 z-50 shadow-sm border-b border-slate-200/30 sticky">
+<button class="h-touch-target-min w-touch-target-min flex items-center justify-center text-slate-500 hover:bg-slate-100 transition-colors rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</button>
+<h1 class="text-blue-600 font-bold text-xl font-sans font-semibold text-lg tracking-tight">Nearby Services</h1>
+<button class="h-touch-target-min w-touch-target-min flex items-center justify-center text-slate-500 hover:bg-slate-100 transition-colors rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="px-margin-mobile pt-stack-md flex flex-col gap-stack-lg max-w-2xl mx-auto">
+<!-- Dashboard Header / Summary -->
+<section class="flex flex-col gap-stack-sm">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-h1 text-h1 text-on-surface">Hello, Alex</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Here's your summary for today.</p>
+</div>
+<img alt="Profile" class="w-12 h-12 rounded-full shadow-sm object-cover" data-alt="A close-up portrait of a friendly professional worker in a bright, modern light-mode setting. The lighting is soft and even, highlighting a trustworthy expression. The background is a crisp white, contrasting gently with subtle blue elements in their attire, reflecting a clean, corporate modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvOqnrkZEVmWxIV0FQ5hwpY1hAcJoznAKxJakG3rB1h7z3Hq4Z01fisF1Yq9KksOFtddTE6pw3rQqA0gYIeuk_mRZK1aewnaVaysUh2ssYGR9NP3WQsq0NxAf8yKbAbNF9EaXuiDTQsgdtMPoxeJ-rPSSUfym-2gFMSbssphX1lPy6tZbWUCTwPvssMil8FGKhYUecjKWDnptqYGrR7M-ig2ErJpiftfDo0VE_k4b3pJuULf2TJ_T8DIA6YkZ-b5_JwU31J4yR8MTI"/>
+</div>
+</section>
+<!-- Summary Cards Bento Grid -->
+<section class="grid grid-cols-2 gap-gutter">
+<!-- Earnings Card -->
+<div class="bg-surface-container-lowest rounded-xl p-stack-md shadow-[0_4px_20px_0px_rgba(0,0,0,0.03)] flex flex-col gap-stack-sm relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="h-10 w-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-weight="fill">payments</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container px-2 py-1 rounded-full">+12%</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Daily Earnings</p>
+<p class="font-h2 text-h2 text-on-surface">$145.50</p>
+</div>
+</div>
+<!-- Status Card -->
+<div class="bg-primary rounded-xl p-stack-md shadow-[0_4px_20px_0px_rgba(0,0,0,0.1)] flex flex-col gap-stack-sm text-on-primary">
+<div class="flex justify-between items-start">
+<div class="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined" data-weight="fill">power_settings_new</span>
+</div>
+<!-- Toggle Switch -->
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer border-transparent top-0.5 left-0.5 checked:right-0.5 checked:left-auto" id="toggle" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-secondary-fixed cursor-pointer" for="toggle"></label>
+</div>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-white/80">Current Status</p>
+<p class="font-h2 text-h2">Online</p>
+</div>
+</div>
+</section>
+<!-- New Requests Section -->
+<section class="flex flex-col gap-stack-md">
+<div class="flex justify-between items-end">
+<h3 class="font-h2 text-h2 text-on-surface">New Requests</h3>
+<span class="font-label-sm text-label-sm text-primary">View All</span>
+</div>
+<!-- Request Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-stack-md shadow-[0_8px_30px_0px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md">
+<div class="flex gap-stack-md">
+<img alt="Job Location" class="w-20 h-20 rounded-lg object-cover bg-surface-variant" data-alt="A bright, airy residential living room viewed during daytime. The scene is clean and modern, featuring neutral tones, a plush white sofa, and a sleek glass coffee table. Sunlight streams through large windows, creating soft, natural light that enhances the crisp, energetic, light-mode design feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmJj-nT95ywgF-iFVrkGzeS17VWP-zB9GoXn3ZEqecQd0F9GBUceHZlSWwWJfkOSWXBLRoCR7QYeU0KEZu7m_63STRG2Fsznk3dDjuNSAaiYtlV293VBghAy5RdejbuxpvdceQWE9U-PVA0NgS7D-dqpyLOjgde9UjjFynhcta43Nzf-vH4sjEnNrxwYgmF_ys1qeY_LO8aEH7WJaOa4ZJSek_mgL8Rhtknr6-vzkhEVIJFenbalqzvj-QRyEHv16dhVWvxiBbnRMN"/>
+<div class="flex flex-col justify-between flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-h3 text-h3 text-on-surface line-clamp-1">Deep Cleaning</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">2.4 miles away</p>
+</div>
+<span class="font-h3 text-h3 text-primary">$45</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-sm text-label-sm">Today, 2:00 PM</span>
+</div>
+</div>
+</div>
+<div class="flex gap-stack-sm pt-2 border-t border-surface-variant">
+<button class="flex-1 h-[48px] rounded-lg bg-surface-variant text-on-surface font-label-bold text-label-bold active:scale-95 transition-transform">Decline</button>
+<button class="flex-1 h-[48px] rounded-lg bg-primary text-on-primary font-label-bold text-label-bold active:scale-95 transition-transform shadow-md">Accept</button>
+</div>
+</div>
+<!-- Request Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-stack-md shadow-[0_8px_30px_0px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md">
+<div class="flex gap-stack-md">
+<div class="w-20 h-20 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl">local_shipping</span>
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-h3 text-h3 text-on-surface line-clamp-1">Furniture Moving</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">1.1 miles away</p>
+</div>
+<span class="font-h3 text-h3 text-primary">$80</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-sm text-label-sm">Tomorrow, 9:00 AM</span>
+</div>
+</div>
+</div>
+<div class="flex gap-stack-sm pt-2 border-t border-surface-variant">
+<button class="flex-1 h-[48px] rounded-lg bg-surface-variant text-on-surface font-label-bold text-label-bold active:scale-95 transition-transform">Decline</button>
+<button class="flex-1 h-[48px] rounded-lg bg-primary text-on-primary font-label-bold text-label-bold active:scale-95 transition-transform shadow-md">Accept</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-6 md:pb-4 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl docked full-width bottom-0 rounded-t-3xl shadow-[0_-4px_20px_0px_rgba(0,0,0,0.05)] md:hidden">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:opacity-80 active:scale-90 transition-all duration-200 haptic-feedback" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-sans text-[10px] font-medium mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-600 dark:text-blue-400 scale-110 transition-transform hover:opacity-80 active:scale-90 duration-200 haptic-feedback" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today" data-weight="fill">calendar_today</span>
+<span class="font-sans text-[10px] font-medium mt-1">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:opacity-80 active:scale-90 transition-all duration-200 haptic-feedback" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-sans text-[10px] font-medium mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:opacity-80 active:scale-90 transition-all duration-200 haptic-feedback" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-sans text-[10px] font-medium mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

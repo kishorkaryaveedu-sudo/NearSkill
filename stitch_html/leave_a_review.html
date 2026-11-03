@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NearSkill - Submit Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#72fe88",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#6ffb85",
+                        "on-surface": "#1b1b1d",
+                        "on-primary-container": "#fefcff",
+                        "surface-container": "#f0edef",
+                        "on-tertiary-fixed-variant": "#3631b4",
+                        "on-tertiary-container": "#fffbff",
+                        "primary-container": "#0070eb",
+                        "on-primary-fixed": "#001a41",
+                        "secondary-fixed-dim": "#53e16f",
+                        "on-secondary-fixed-variant": "#00531c",
+                        "on-primary-fixed-variant": "#004493",
+                        "surface": "#fcf8fb",
+                        "tertiary-fixed-dim": "#c2c1ff",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#fcf8fb",
+                        "on-secondary-container": "#00732a",
+                        "tertiary-fixed": "#e2dfff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#005bc1",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed": "#0c006a",
+                        "on-secondary-fixed": "#002107",
+                        "surface-container-low": "#f6f3f5",
+                        "primary-fixed": "#d8e2ff",
+                        "outline": "#717786",
+                        "on-background": "#1b1b1d",
+                        "tertiary-container": "#6664e4",
+                        "surface-dim": "#dcd9dc",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e4e2e4",
+                        "tertiary": "#4c4aca",
+                        "primary": "#0058bc",
+                        "surface-container-high": "#eae7ea",
+                        "background": "#fcf8fb",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-surface-variant": "#414755",
+                        "outline-variant": "#c1c6d7",
+                        "secondary": "#006e28",
+                        "inverse-surface": "#303032",
+                        "inverse-primary": "#adc6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "margin-mobile": "20px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "stack-lg": "24px",
+                        "touch-target-min": "44px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h1": ["Inter"],
+                        "display": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "h2": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["17px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "25px", "letterSpacing": "0em", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "h1": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display": ["34px", {"lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "label-bold": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen relative pb-[100px]">
+<!-- Contextual Header (Task Flow - Suppresses Global Nav) -->
+<header class="sticky top-0 w-full z-20 bg-surface/80 backdrop-blur-md border-b border-surface-container">
+<div class="flex items-center h-[60px] px-margin-mobile">
+<button aria-label="Close" class="w-[44px] h-[44px] flex items-center justify-start -ml-2 text-on-surface">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+<h1 class="flex-1 text-center font-h3 text-h3 text-on-surface mr-[28px]">Leave a Review</h1>
+</div>
+</header>
+<main class="px-margin-mobile py-stack-lg flex flex-col gap-stack-lg max-w-md mx-auto">
+<!-- Worker Context Card -->
+<section class="bg-surface-container-lowest rounded-xl p-stack-md flex items-center gap-stack-md shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-surface-container-low">
+<div class="w-[56px] h-[56px] rounded-full overflow-hidden flex-shrink-0 bg-surface-container">
+<img alt="Sarah Jenkins Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a friendly female plumber in her 30s. She is smiling warmly and wearing a clean, modern navy blue work uniform. The background is a brightly lit, slightly out-of-focus modern white kitchen, conveying a sense of trustworthiness and local service. The lighting is soft and natural, fitting a high-end corporate modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcyqOZ6qNuI44tRhRzRuIb6SY8YVuADR0PAlyd7dBke8Ao_7Y1NtCbE0glOH1nPy9cGC2XC_eA8pvX4v9KWBjQR-jg51Gg3AvIrycqpBRVfWTykYwKOkKQS4aBDYM82jpKkLU_YoaXbR3_bFH44mIPeTMa3FPSzvGoJM4u3sUo0v1i-I7SDlSKzW-UXL1lmkBsClAlmdx3W2AeqF_ttxsNFlNLl8qianIqEN3yrDv9Mf_gZXcSxWMPGke_T17vCoLKM0RCCyw73cns"/>
+</div>
+<div class="flex flex-col">
+<h2 class="font-h3 text-h3 text-on-surface">Sarah Jenkins</h2>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">plumbing</span>
+                    Plumbing Repair
+                </p>
+</div>
+</section>
+<!-- Rating Selector -->
+<section class="flex flex-col items-center gap-stack-sm pt-stack-sm">
+<h3 class="font-h2 text-h2 text-on-surface text-center">How was your experience?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-center mb-2">Tap a star to rate Sarah's work.</p>
+<div class="flex justify-center gap-2 w-full">
+<!-- Interactive Star Row -->
+<button class="w-[44px] h-[44px] flex items-center justify-center text-primary transition-transform active:scale-90">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button class="w-[44px] h-[44px] flex items-center justify-center text-primary transition-transform active:scale-90">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button class="w-[44px] h-[44px] flex items-center justify-center text-primary transition-transform active:scale-90">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button class="w-[44px] h-[44px] flex items-center justify-center text-primary transition-transform active:scale-90">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button class="w-[44px] h-[44px] flex items-center justify-center text-surface-variant transition-transform active:scale-90">
+<span class="material-symbols-outlined text-[40px]">star</span>
+</button>
+</div>
+<p class="font-label-bold text-label-bold text-primary mt-1">Great</p>
+</section>
+<!-- Feedback Text Area -->
+<section class="flex flex-col gap-stack-sm w-full">
+<label class="font-label-bold text-label-bold text-on-surface" for="feedback">Share the details</label>
+<div class="relative w-full">
+<textarea class="w-full bg-surface-container-low border-0 rounded-xl p-stack-md font-body-md text-body-md text-on-surface placeholder:text-outline resize-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all shadow-inner" id="feedback" placeholder="What did you like? Did Sarah arrive on time? Was the problem resolved quickly?" rows="4"></textarea>
+</div>
+</section>
+<!-- Add Photo Button -->
+<section class="w-full">
+<button class="w-full flex flex-col items-center justify-center gap-stack-sm py-stack-lg border-2 border-dashed border-outline-variant rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-colors active:scale-[0.98]">
+<div class="w-[44px] h-[44px] rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">add_a_photo</span>
+</div>
+<div class="text-center">
+<span class="block font-label-bold text-label-bold text-on-surface">Add photos</span>
+<span class="block font-body-md text-body-md text-on-surface-variant text-[13px] mt-1">Optional • Show the completed work</span>
+</div>
+</button>
+</section>
+</main>
+<!-- Fixed Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-lg border-t border-surface-container z-50 pb-safe">
+<div class="p-margin-mobile max-w-md mx-auto">
+<button class="w-full h-[52px] bg-primary text-on-primary rounded-full font-label-bold text-label-bold flex items-center justify-center shadow-md active:scale-[0.98] transition-transform">
+                Submit Review
+            </button>
+</div>
+</div>
+</body></html>

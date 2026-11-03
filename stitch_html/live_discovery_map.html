@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Live Discovery Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#72fe88",
+                      "primary-fixed": "#d8e2ff",
+                      "surface-bright": "#fcf8fb",
+                      "on-error-container": "#93000a",
+                      "secondary": "#006e28",
+                      "on-background": "#1b1b1d",
+                      "error": "#ba1a1a",
+                      "surface": "#fcf8fb",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#00732a",
+                      "tertiary-fixed": "#e2dfff",
+                      "on-secondary-fixed-variant": "#00531c",
+                      "surface-dim": "#dcd9dc",
+                      "on-secondary-fixed": "#002107",
+                      "on-primary-fixed-variant": "#004493",
+                      "surface-container-low": "#f6f3f5",
+                      "surface-container": "#f0edef",
+                      "inverse-primary": "#adc6ff",
+                      "inverse-on-surface": "#f3f0f2",
+                      "background": "#fcf8fb",
+                      "primary-container": "#0070eb",
+                      "primary": "#0058bc",
+                      "on-surface": "#1b1b1d",
+                      "on-primary-fixed": "#001a41",
+                      "secondary-fixed-dim": "#53e16f",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#e4e2e4",
+                      "surface-container-high": "#eae7ea",
+                      "outline-variant": "#c1c6d7",
+                      "inverse-surface": "#303032",
+                      "surface-tint": "#005bc1",
+                      "outline": "#717786",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#c2c1ff",
+                      "on-surface-variant": "#414755",
+                      "tertiary": "#4c4aca",
+                      "tertiary-container": "#6664e4",
+                      "primary-fixed-dim": "#adc6ff",
+                      "on-primary-container": "#fefcff",
+                      "on-tertiary-fixed": "#0c006a",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#6ffb85",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#e4e2e4",
+                      "on-tertiary-fixed-variant": "#3631b4",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#fffbff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "3xl": "1.5rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "stack-lg": "24px",
+                      "stack-sm": "8px",
+                      "stack-md": "16px",
+                      "touch-target-min": "44px",
+                      "margin-mobile": "20px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "h2": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "display": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-bold": ["Inter"],
+                      "h3": ["Inter"],
+                      "h1": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["15px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "display": ["34px", {"lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["17px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "label-bold": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "h3": ["20px", {"lineHeight": "25px", "letterSpacing": "0em", "fontWeight": "600"}],
+                      "h1": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md h-screen w-screen overflow-hidden flex flex-col relative">
+<!-- Full Screen Map Background -->
+<div class="absolute inset-0 z-0 bg-surface-variant flex items-center justify-center">
+<img alt="Map View" class="w-full h-full object-cover opacity-80" data-alt="A clean, minimalist, high-quality map view showing a neighborhood layout with soft white, gray, and subtle blue tones. The streets are clearly delineated without heavy text overlays, maintaining a bright, modern, corporate aesthetic suitable for a high-end local services application." data-location="Seattle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6fmeZ0aMEj01GbB0krQHQdA-Dydx5otexpPbknZL8KispTGtCS7qDAuxK1hF-mkBilK07aRJoFcoXYUmd6q6dbN1ZGqidCKwZGWAQnvd-dJzekrKFsjOWw2nNu0jcpHxQHeTTaC0DR2qSewcmNex2mKtxbvrRG7avFCTAXLrmL7hn3es0wfZW_T9foVDmk7u46tWLRIoxZQcbXB2a1FhYZmEkmt144j8LykiaIAD3D0RnHD6wcuJVJqhqjHXbIA0kSJuCr8PQviAR"/>
+<!-- Map Pin 1 -->
+<div class="absolute top-1/4 left-1/3 flex flex-col items-center">
+<div class="bg-white rounded-full p-1 shadow-md mb-1 relative">
+<img alt="Pro 1" class="w-8 h-8 rounded-full object-cover" data-alt="A small, circular headshot of a smiling male professional with short dark hair, wearing a clean light blue button-down shirt, set against a bright white background. Corporate modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmxtXJoijLVp3vu4nS-OP5B1GXbAZtccqRWOnYnWGXksJFi2NpywS3Q-aNa8470AtzEuOae8UkCR2HeiHBAKCrIhou-n2ek5QyUsBz7sXwRppBuczkG23qlU29ZfV3x87xIIjclT1QLOQ-vcfZi_mc1G_R7c_Q8pwlZlj_L1Is46_-jMA1dIjT3MXH09GfYJiIesV3KTXRNFTazqAglSAqXcW0bCC9UWgluRfMedOl3lhib4Tw8hh_lrvYnuVVUKlL-kLg8Id33Pqo"/>
+<div class="absolute -bottom-1 -right-1 bg-secondary w-3 h-3 rounded-full border-2 border-white"></div>
+</div>
+<div class="bg-primary text-on-primary font-label-bold text-label-bold px-2 py-0.5 rounded-full shadow-sm">
+                $45
+            </div>
+</div>
+<!-- Map Pin 2 -->
+<div class="absolute top-1/2 right-1/4 flex flex-col items-center">
+<div class="bg-white rounded-full p-1 shadow-md mb-1 relative">
+<img alt="Pro 2" class="w-10 h-10 rounded-full object-cover" data-alt="A small, circular headshot of a confident female professional with long dark hair, wearing a white blouse, set against a soft gray background. Energetic and trustworthy aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE2Q4agfKNMnPHp39Y0znl-tTuyjkVtGygKxxqlTOSDcdYoUUfB66KNdnThTTgUJddqVh9l6me-WzRkXG3dug6_eGtPG-qSXpxGZH6v522T981dPbxst5kt5gEdFHIIe4TeruIakikerz7ZYxZxkW7__pTAm-yrDhqqjVQ_T2T0RR_pTqlym2GHDH-MzZnphb0mge4wTORaSuP0_2lJoLHyWNXBSifWHqvBLAfG-G5N0rlMNs9Hm57R5Hhw99NMK7ZzQmSAJYrcxk5"/>
+<div class="absolute -bottom-1 -right-1 bg-secondary w-3.5 h-3.5 rounded-full border-2 border-white"></div>
+</div>
+<div class="bg-primary text-on-primary font-label-bold text-label-bold px-2.5 py-1 rounded-full shadow-md scale-110">
+                $60
+            </div>
+</div>
+<!-- Map Pin 3 -->
+<div class="absolute bottom-1/3 left-1/4 flex flex-col items-center">
+<div class="bg-white rounded-full p-1 shadow-md mb-1 relative">
+<img alt="Pro 3" class="w-8 h-8 rounded-full object-cover opacity-80" data-alt="A small, circular headshot of an approachable female professional with blonde hair, wearing a casual but neat gray sweater, bright lighting. Trustworthy service provider aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIG_uXf5ygtDRrYZihoIif4b26YGLzUInrDLxBL92R6W7D1GIfdoPB-3rnb5PKrcD2ngMZHEzDXb-lvMBZxFSUCbdCRMfYsCFShlDQWiLkeUxDhNLXhv8UAjX7zyeKLPttByM6jJCssFnWF9ygo0Bbvuy7FOLXQPSoB4lGoYdebPmfkol3Pw6yC256AC1KbH0_B1uSxKI7HZhgc7emBrDPm_04TUrPxLg2uoNKLVzyPhHhjp1Wi6kL2pSfT6njSsHWRADf0jga7WkC"/>
+</div>
+<div class="bg-surface-container-high text-on-surface-variant font-label-bold text-label-bold px-2 py-0.5 rounded-full shadow-sm">
+                $35
+            </div>
+</div>
+</div>
+<!-- Floating Search Bar (TopAppBar Proxy for Map) -->
+<div class="absolute top-0 left-0 w-full z-20 px-margin-mobile pt-10">
+<div class="bg-white/90 backdrop-blur-xl shadow-md rounded-full h-14 flex items-center px-4 w-full border border-surface-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-3" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-lg font-body-lg text-on-surface placeholder-outline p-0" placeholder="Search for nearby services..." type="text"/>
+<div class="h-8 w-[1px] bg-outline-variant mx-3"></div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">tune</span>
+</button>
+</div>
+<!-- Quick Filters Chips -->
+<div class="flex overflow-x-auto hide-scrollbar mt-4 gap-2 pb-2">
+<button class="whitespace-nowrap bg-primary text-on-primary font-label-bold text-label-bold px-4 py-2 rounded-full h-8 flex items-center shadow-sm">
+                All Pros
+            </button>
+<button class="whitespace-nowrap bg-white/90 backdrop-blur-md text-on-surface font-label-bold text-label-bold px-4 py-2 rounded-full h-8 flex items-center shadow-sm border border-surface-variant">
+                Plumbing
+            </button>
+<button class="whitespace-nowrap bg-white/90 backdrop-blur-md text-on-surface font-label-bold text-label-bold px-4 py-2 rounded-full h-8 flex items-center shadow-sm border border-surface-variant">
+                Cleaning
+            </button>
+<button class="whitespace-nowrap bg-white/90 backdrop-blur-md text-on-surface font-label-bold text-label-bold px-4 py-2 rounded-full h-8 flex items-center shadow-sm border border-surface-variant">
+                Electrical
+            </button>
+</div>
+</div>
+<!-- Map Controls -->
+<div class="absolute right-margin-mobile bottom-[320px] z-10 flex flex-col gap-3">
+<button class="w-11 h-11 bg-white/90 backdrop-blur-md rounded-full shadow-md flex items-center justify-center text-on-surface hover:bg-surface-container-low">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">my_location</span>
+</button>
+</div>
+<!-- Bottom Sheet (Nearby Pros) -->
+<div class="absolute bottom-[72px] left-0 w-full bg-white rounded-t-3xl shadow-[0_-8px_30px_0px_rgba(0,0,0,0.1)] z-30 flex flex-col h-[280px] transition-transform">
+<!-- Grabber Handle -->
+<div class="w-full flex justify-center pt-3 pb-2">
+<div class="w-9 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<div class="px-margin-mobile pb-3 flex justify-between items-end">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface">Nearby Pros</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">24 available in your area</p>
+</div>
+<button class="text-primary font-label-bold text-label-bold flex items-center">
+                View List <span class="material-symbols-outlined text-[18px] ml-1">arrow_forward</span>
+</button>
+</div>
+<!-- Horizontal Scrollable Cards -->
+<div class="flex-1 overflow-x-auto hide-scrollbar px-margin-mobile pb-6 flex gap-4 items-start">
+<!-- Pro Card 1 -->
+<div class="min-w-[240px] bg-surface-container-low rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<img alt="Sarah J." class="w-12 h-12 rounded-full object-cover" data-alt="A medium headshot of a confident female professional with long dark hair, wearing a white blouse, set against a soft gray background. Energetic and trustworthy aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4dnj1Er-JPIX_kC-z2GTDCkgSXVNCdwn4zynRv9aa5wthnBF_rospT195R8ifLdAZPQhgnEDzl5vQ35udf8I55rEdQFZ_VNBPinQwxxF_VCsue-_y79s5cAXHtFE0kGDBHMewLzxMKQFoxTtsBhN6Ea3K5pc_tD7ciQlyD3p3pjji3DHOcV4TBkBt61Np3_46kbMZeh5DEbYVDf0zs1Dpzdz7mO5t7YADU043D8MSAP93I7y_ef6jH-mYKcotUymlYJJZkfiNnbRG"/>
+<div class="flex-1">
+<h3 class="font-h3 text-h3 text-on-surface leading-tight">Sarah J.</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">House Cleaning</p>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-1 bg-surface-bright px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-bold text-label-bold text-on-surface">4.9</span>
+<span class="font-label-sm text-label-sm text-outline">(120)</span>
+</div>
+<span class="font-label-bold text-label-bold text-primary">$60/hr</span>
+</div>
+</div>
+<!-- Pro Card 2 -->
+<div class="min-w-[240px] bg-surface-container-low rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<img alt="Mike T." class="w-12 h-12 rounded-full object-cover" data-alt="A medium headshot of a smiling male professional with short dark hair, wearing a clean light blue button-down shirt, set against a bright white background. Corporate modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUGbis8ir76SkG0t8MUeKvqFaQXI16CnCdPRQV098kvgAlAZm6HcotnSC8tdg5EAzwoSjrzqv23LXo9vdhtiXALMO6U8hjrojatYbUVkG4xclVFu6bb29f7bshjyBw8FgXugwmahyUrIauR1eW1xTDrjOf3_SeJY2CuB_WVmWfet5wGzin6CXM9VKT2IyWEUyqEMYSUJS-44LN9QldY_UY1zsrRpGJTY6hqJ1v-UzjYVMQ1uWT92Sm-L19gbRcXwj6zFpn2-XSMbTS"/>
+<div class="flex-1">
+<h3 class="font-h3 text-h3 text-on-surface leading-tight">Mike T.</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Plumbing</p>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-1 bg-surface-bright px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-bold text-label-bold text-on-surface">4.7</span>
+<span class="font-label-sm text-label-sm text-outline">(85)</span>
+</div>
+<span class="font-label-bold text-label-bold text-primary">$45/hr</span>
+</div>
+</div>
+<!-- Spacer for scroll padding -->
+<div class="min-w-[1px] h-full"></div>
+</div>
+</div>
+<!-- BottomNavBar (Shared Component JSON Blueprint) -->
+<div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 shadow-[0_-4px_20px_0px_rgba(0,0,0,0.05)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-6 md:pb-4 rounded-t-3xl md:hidden">
+<!-- Explore (Active) -->
+<button class="flex flex-col items-center justify-center text-blue-600 dark:text-blue-400 scale-110 transition-transform w-[touch-target-min] h-[touch-target-min]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-sans text-[10px] font-medium mt-1">Explore</span>
+</button>
+<!-- Bookings -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:opacity-80 active:scale-90 transition-all duration-200 haptic-feedback w-[touch-target-min] h-[touch-target-min]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span class="font-sans text-[10px] font-medium mt-1">Bookings</span>
+</button>
+<!-- Messages -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:opacity-80 active:scale-90 transition-all duration-200 haptic-feedback w-[touch-target-min] h-[touch-target-min]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">chat_bubble</span>
+<span class="font-sans text-[10px] font-medium mt-1">Messages</span>
+</button>
+<!-- Profile -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:opacity-80 active:scale-90 transition-all duration-200 haptic-feedback w-[touch-target-min] h-[touch-target-min]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-sans text-[10px] font-medium mt-1">Profile</span>
+</button>
+</div>
+</body></html>

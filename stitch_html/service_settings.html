@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NearSkill - Skill &amp; Pricing Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#72fe88",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#6ffb85",
+                        "on-surface": "#1b1b1d",
+                        "on-primary-container": "#fefcff",
+                        "surface-container": "#f0edef",
+                        "on-tertiary-fixed-variant": "#3631b4",
+                        "on-tertiary-container": "#fffbff",
+                        "primary-container": "#0070eb",
+                        "on-primary-fixed": "#001a41",
+                        "secondary-fixed-dim": "#53e16f",
+                        "on-secondary-fixed-variant": "#00531c",
+                        "on-primary-fixed-variant": "#004493",
+                        "surface": "#fcf8fb",
+                        "tertiary-fixed-dim": "#c2c1ff",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#fcf8fb",
+                        "on-secondary-container": "#00732a",
+                        "tertiary-fixed": "#e2dfff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#005bc1",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed": "#0c006a",
+                        "on-secondary-fixed": "#002107",
+                        "surface-container-low": "#f6f3f5",
+                        "primary-fixed": "#d8e2ff",
+                        "outline": "#717786",
+                        "on-background": "#1b1b1d",
+                        "tertiary-container": "#6664e4",
+                        "surface-dim": "#dcd9dc",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e4e2e4",
+                        "tertiary": "#4c4aca",
+                        "primary": "#0058bc",
+                        "surface-container-high": "#eae7ea",
+                        "background": "#fcf8fb",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-surface-variant": "#414755",
+                        "outline-variant": "#c1c6d7",
+                        "secondary": "#006e28",
+                        "inverse-surface": "#303032",
+                        "inverse-primary": "#adc6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "margin-mobile": "20px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "stack-lg": "24px",
+                        "touch-target-min": "44px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h1": ["Inter"],
+                        "display": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "h2": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["17px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "25px", "letterSpacing": "0em", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "h1": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display": ["34px", {"lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "label-bold": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pt-16 pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm flex items-center justify-between px-5 h-16 w-full font-inter antialiased">
+<button class="flex items-center justify-center min-w-[44px] min-h-[44px] hover:opacity-80 transition-opacity active:scale-95 duration-150 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold text-blue-600 dark:text-blue-400">NearSkill</h1>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">person</span>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-margin-mobile pt-stack-md flex flex-col gap-stack-lg">
+<!-- Page Title & Availability Toggle -->
+<section class="flex flex-col gap-stack-sm">
+<div class="flex justify-between items-center">
+<h2 class="font-h1 text-h1 text-on-surface">Manage Skills</h2>
+</div>
+<div class="bg-surface-container-low rounded-xl p-stack-md flex items-center justify-between shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+<div class="flex flex-col">
+<span class="font-h3 text-h3 text-on-surface">Live Availability</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Accepting new local requests</span>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer min-w-[44px] min-h-[44px] justify-end">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-14 h-8 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</section>
+<!-- Skills List -->
+<section class="flex flex-col gap-stack-md">
+<div class="flex items-center justify-between">
+<h3 class="font-h2 text-h2 text-on-surface">Active Skills &amp; Pricing</h3>
+<button class="font-label-bold text-label-bold text-primary min-h-[touch-target-min] px-unit flex items-center hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined mr-1 text-[18px]">add</span> Add New
+                </button>
+</div>
+<!-- Skill Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-stack-md shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-surface-variant/50 flex flex-col gap-stack-sm">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-stack-sm">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">plumbing</span>
+</div>
+<div class="flex flex-col">
+<span class="font-h3 text-h3 text-on-surface">Plumbing Repair</span>
+<span class="font-body-md text-body-md text-primary font-semibold">$65/hr</span>
+</div>
+</div>
+<div class="flex gap-unit">
+<button class="min-w-[touch-target-min] min-h-[touch-target-min] flex items-center justify-center text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="min-w-[touch-target-min] min-h-[touch-target-min] flex items-center justify-center text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap gap-unit mt-unit">
+<span class="bg-surface-container px-3 py-1.5 rounded-full font-label-sm text-label-sm text-on-surface-variant">Leak Fixes</span>
+<span class="bg-surface-container px-3 py-1.5 rounded-full font-label-sm text-label-sm text-on-surface-variant">Pipe Installation</span>
+</div>
+</div>
+<!-- Skill Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-stack-md shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-surface-variant/50 flex flex-col gap-stack-sm">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-stack-sm">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">electrical_services</span>
+</div>
+<div class="flex flex-col">
+<span class="font-h3 text-h3 text-on-surface">Electrical Work</span>
+<span class="font-body-md text-body-md text-primary font-semibold">$80/hr</span>
+</div>
+</div>
+<div class="flex gap-unit">
+<button class="min-w-[touch-target-min] min-h-[touch-target-min] flex items-center justify-center text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="min-w-[touch-target-min] min-h-[touch-target-min] flex items-center justify-center text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap gap-unit mt-unit">
+<span class="bg-surface-container px-3 py-1.5 rounded-full font-label-sm text-label-sm text-on-surface-variant">Wiring</span>
+<span class="bg-surface-container px-3 py-1.5 rounded-full font-label-sm text-label-sm text-on-surface-variant">Fixture Install</span>
+</div>
+</div>
+</section>
+<!-- Performance / Stats Bento -->
+<section class="grid grid-cols-2 gap-gutter mt-stack-sm">
+<div class="bg-surface-container-lowest rounded-xl p-stack-md shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-surface-variant/50 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-secondary text-3xl mb-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-h1 text-h1 text-on-surface">4.9</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Average Rating</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-stack-md shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-surface-variant/50 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary text-3xl mb-1" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+<span class="font-h1 text-h1 text-on-surface">142</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Jobs Completed</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full rounded-t-2xl z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border-t border-slate-200/50 dark:border-slate-800/50 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-blue-500 active:scale-90 duration-200 min-w-[touch-target-min] min-h-[touch-target-min]" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[11px] font-semibold tracking-tight mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-blue-500 active:scale-90 duration-200 min-w-[touch-target-min] min-h-[touch-target-min]" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="text-[11px] font-semibold tracking-tight mt-1">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-blue-500 active:scale-90 duration-200 min-w-[touch-target-min] min-h-[touch-target-min]" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-[11px] font-semibold tracking-tight mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-600 dark:text-blue-400 scale-110 transition-transform active:scale-90 duration-200 min-w-[touch-target-min] min-h-[touch-target-min]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[11px] font-semibold tracking-tight mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

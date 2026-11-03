@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Worker Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#72fe88",
+                      "primary-fixed": "#d8e2ff",
+                      "surface-bright": "#fcf8fb",
+                      "on-error-container": "#93000a",
+                      "secondary": "#006e28",
+                      "on-background": "#1b1b1d",
+                      "error": "#ba1a1a",
+                      "surface": "#fcf8fb",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#00732a",
+                      "tertiary-fixed": "#e2dfff",
+                      "on-secondary-fixed-variant": "#00531c",
+                      "surface-dim": "#dcd9dc",
+                      "on-secondary-fixed": "#002107",
+                      "on-primary-fixed-variant": "#004493",
+                      "surface-container-low": "#f6f3f5",
+                      "surface-container": "#f0edef",
+                      "inverse-primary": "#adc6ff",
+                      "inverse-on-surface": "#f3f0f2",
+                      "background": "#fcf8fb",
+                      "primary-container": "#0070eb",
+                      "primary": "#0058bc",
+                      "on-surface": "#1b1b1d",
+                      "on-primary-fixed": "#001a41",
+                      "secondary-fixed-dim": "#53e16f",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#e4e2e4",
+                      "surface-container-high": "#eae7ea",
+                      "outline-variant": "#c1c6d7",
+                      "inverse-surface": "#303032",
+                      "surface-tint": "#005bc1",
+                      "outline": "#717786",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#c2c1ff",
+                      "on-surface-variant": "#414755",
+                      "tertiary": "#4c4aca",
+                      "tertiary-container": "#6664e4",
+                      "primary-fixed-dim": "#adc6ff",
+                      "on-primary-container": "#fefcff",
+                      "on-tertiary-fixed": "#0c006a",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#6ffb85",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#e4e2e4",
+                      "on-tertiary-fixed-variant": "#3631b4",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#fffbff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "stack-lg": "24px",
+                      "stack-sm": "8px",
+                      "stack-md": "16px",
+                      "touch-target-min": "44px",
+                      "margin-mobile": "20px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "h2": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "display": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-bold": ["Inter"],
+                      "h3": ["Inter"],
+                      "h1": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["15px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "h2": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "display": ["34px", {"lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["17px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "label-bold": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "h3": ["20px", {"lineHeight": "25px", "letterSpacing": "0em", "fontWeight": "600"}],
+                      "h1": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 glass-panel border-b border-slate-200/30 flex items-center justify-between px-5 h-16 shadow-sm">
+<button class="flex items-center justify-center w-touch-target-min h-touch-target-min active:scale-95 duration-150 text-slate-500 hover:bg-slate-100 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-h3 text-h3 text-on-surface tracking-tight font-bold">Profile</h1>
+<button class="flex items-center justify-center w-touch-target-min h-touch-target-min active:scale-95 duration-150 text-slate-500 hover:bg-slate-100 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative">
+<div class="h-48 w-full bg-surface-container-high relative overflow-hidden">
+<img alt="Cover photo" class="w-full h-full object-cover object-center" data-alt="A professional, well-lit workspace showing a clean desk with modern architectural drafting tools, blueprints, and a sleek laptop. Soft, natural sunlight filters through a nearby window, casting gentle shadows. The color palette features neutral grays, warm wood tones, and crisp whites, conveying a sense of organized, energetic professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU-voLmDhG8kRvgvoIWSa8_qAO4IvgfiOhvvnU74CjmlcUiW2OnYrJKZ15Q2twnY-rjKgxPsTyt4wRt90t8SVUoqCqig4vOyocjgbTYoUUSEaSr4c0YPXsSJ8kIUb1WiPI3opfhK7PvcVK-_yWYD3bX4B2tEzo7prEzcaGO_Dx3ti5qNnOoS23abpuIjiG-sbcxt1ntRDvogDPIbok1JsLgRLCjkDYQ1kCvrYHWd17JfwHO5IoacNH6s8A6Fzh3iEybXOa9Kx73Ykl"/>
+</div>
+<div class="px-margin-mobile relative -mt-16 pb-6">
+<div class="flex items-end justify-between">
+<div class="relative">
+<img alt="Profile photo" class="w-32 h-32 rounded-full border-4 border-background shadow-sm object-cover" data-alt="A high-quality, professional headshot of an energetic young female professional. She has a warm, trustworthy smile and is wearing smart-casual modern attire. The background is softly blurred with a hint of natural light, giving a polished, approachable vibe consistent with a high-trust local marketplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAdsDk1UVx4rzgYVzHjxLlNqLB5WbCVBWpiDqKrfkwX5URQIJNPdA4PMvFf55UAWsrz_C04Z_a9o2kzS8sAbHQcmEeMxIE7iReEhDHoeDDBHuOaRzaO8mJBj43qI_EmdeXVYWwOT6_AVc2VaCbiErobDyUMAhYzMr9y74K5WDujTfECuenoUTY7k1KQlPCCeMKQqGztxIT0dQBy3e6kLldjinc2Fwi9LDwfFUbOz3k1Mnn-w8nVEaw4U3wcWP6LOcdjv9zupLW9zab"/>
+<div class="absolute bottom-2 right-2 bg-secondary text-on-secondary rounded-full w-8 h-8 flex items-center justify-center border-2 border-background shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex gap-2 pb-2">
+<div class="flex items-center gap-1 bg-surface-container rounded-full px-3 py-1">
+<span class="material-symbols-outlined text-tertiary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-bold text-label-bold text-on-surface">4.9</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(128)</span>
+</div>
+</div>
+</div>
+<div class="mt-4">
+<h2 class="font-h1 text-h1 text-on-surface">Elena Rodriguez</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Master Electrician &amp; Smart Home Specialist</p>
+<div class="flex items-center gap-1 mt-2 text-primary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="font-label-bold text-label-bold">Downtown Seattle, WA • 2.4 mi away</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bento -->
+<section class="px-margin-mobile py-stack-md">
+<div class="grid grid-cols-3 gap-unit">
+<div class="bg-surface-container-low rounded-xl p-4 flex flex-col items-center justify-center">
+<span class="font-h2 text-h2 text-on-surface">150+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 text-center">Jobs<br/>Completed</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 flex flex-col items-center justify-center">
+<span class="font-h2 text-h2 text-on-surface">100%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 text-center">Response<br/>Rate</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 flex flex-col items-center justify-center">
+<span class="font-h2 text-h2 text-on-surface">8 yrs</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 text-center">Years<br/>Active</span>
+</div>
+</div>
+</section>
+<!-- About -->
+<section class="px-margin-mobile py-stack-md">
+<h3 class="font-h3 text-h3 text-on-surface mb-stack-sm">About</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Licensed and insured master electrician specializing in smart home integrations, EV charger installations, and general residential electrical work. I pride myself on clean routing, safe practices, and explaining exactly what I'm doing in plain English.
+            </p>
+</section>
+<!-- Skills -->
+<section class="px-margin-mobile py-stack-md">
+<h3 class="font-h3 text-h3 text-on-surface mb-stack-sm">Skills &amp; Expertise</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-surface-container rounded-full font-label-bold text-label-bold text-on-surface">Smart Home Setup</span>
+<span class="px-4 py-2 bg-surface-container rounded-full font-label-bold text-label-bold text-on-surface">EV Chargers</span>
+<span class="px-4 py-2 bg-surface-container rounded-full font-label-bold text-label-bold text-on-surface">Panel Upgrades</span>
+<span class="px-4 py-2 bg-surface-container rounded-full font-label-bold text-label-bold text-on-surface">Lighting Design</span>
+<span class="px-4 py-2 bg-surface-container rounded-full font-label-bold text-label-bold text-on-surface">Troubleshooting</span>
+</div>
+</section>
+<!-- Experience Timeline -->
+<section class="px-margin-mobile py-stack-md">
+<h3 class="font-h3 text-h3 text-on-surface mb-stack-md">Experience</h3>
+<div class="relative pl-6 border-l-2 border-surface-container-high space-y-stack-lg ml-2">
+<!-- Timeline Item 1 -->
+<div class="relative">
+<div class="absolute -left-[31px] bg-primary-container rounded-full w-4 h-4 border-4 border-background"></div>
+<h4 class="font-h2 text-h2 text-on-surface text-[18px]">Independent Contractor</h4>
+<p class="font-label-sm text-label-sm text-primary font-medium mt-1">2020 - Present</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+                        Running my own local electrical business serving the greater metro area. Focus on high-end residential and modern tech upgrades.
+                    </p>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative">
+<div class="absolute -left-[31px] bg-surface-container-high rounded-full w-4 h-4 border-4 border-background"></div>
+<h4 class="font-h2 text-h2 text-on-surface text-[18px]">Journeyman Electrician</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">SparkTech Solutions • 2016 - 2020</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+                        Led commercial and residential install crews. Specialized in complex rewiring projects.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Verified Reviews -->
+<section class="px-margin-mobile py-stack-md">
+<div class="flex items-center justify-between mb-stack-md">
+<h3 class="font-h3 text-h3 text-on-surface">Verified Reviews</h3>
+<button class="font-label-bold text-label-bold text-primary flex items-center gap-1">
+                    See All <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<div class="space-y-stack-sm">
+<!-- Review Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_2px_10px_0px_rgba(0,0,0,0.03)]">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center font-label-bold text-label-bold text-on-surface">
+                                JD
+                            </div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface">James D.</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">EV Charger Install</p>
+</div>
+</div>
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        "Elena was fantastic. She showed up on time, explained the whole process for routing the new 240v line, and cleaned up perfectly afterwards. Highly recommend!"
+                    </p>
+</div>
+<!-- Review Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_2px_10px_0px_rgba(0,0,0,0.03)]">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center font-label-bold text-label-bold text-on-surface">
+                                SM
+                            </div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface">Sarah M.</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Smart Switches</p>
+</div>
+</div>
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        "Very knowledgeable about different smart home protocols. Got my entire downstairs wired up and integrated with my existing hub in just a few hours."
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Footer Actions -->
+<div class="fixed bottom-0 left-0 w-full z-50 glass-panel border-t border-slate-100 px-margin-mobile py-4 shadow-[0_-4px_20px_0px_rgba(0,0,0,0.05)]">
+<div class="flex gap-stack-sm max-w-md mx-auto">
+<button class="flex-1 h-[48px] bg-[#E5E5EA] text-on-background font-label-bold text-label-bold rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+                Message
+            </button>
+<button class="flex-[2] h-[48px] bg-primary text-on-primary font-label-bold text-label-bold rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-sm">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+                Book Now
+            </button>
+</div>
+</div>
+</body></html>

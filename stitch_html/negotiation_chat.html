@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Negotiation Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#72fe88",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-bright": "#fcf8fb",
+                        "on-error-container": "#93000a",
+                        "secondary": "#006e28",
+                        "on-background": "#1b1b1d",
+                        "error": "#ba1a1a",
+                        "surface": "#fcf8fb",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#00732a",
+                        "tertiary-fixed": "#e2dfff",
+                        "on-secondary-fixed-variant": "#00531c",
+                        "surface-dim": "#dcd9dc",
+                        "on-secondary-fixed": "#002107",
+                        "on-primary-fixed-variant": "#004493",
+                        "surface-container-low": "#f6f3f5",
+                        "surface-container": "#f0edef",
+                        "inverse-primary": "#adc6ff",
+                        "inverse-on-surface": "#f3f0f2",
+                        "background": "#fcf8fb",
+                        "primary-container": "#0070eb",
+                        "primary": "#0058bc",
+                        "on-surface": "#1b1b1d",
+                        "on-primary-fixed": "#001a41",
+                        "secondary-fixed-dim": "#53e16f",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e4e2e4",
+                        "surface-container-high": "#eae7ea",
+                        "outline-variant": "#c1c6d7",
+                        "inverse-surface": "#303032",
+                        "surface-tint": "#005bc1",
+                        "outline": "#717786",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#c2c1ff",
+                        "on-surface-variant": "#414755",
+                        "tertiary": "#4c4aca",
+                        "tertiary-container": "#6664e4",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#fefcff",
+                        "on-tertiary-fixed": "#0c006a",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#6ffb85",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-tertiary-fixed-variant": "#3631b4",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#fffbff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "touch-target-min": "44px",
+                        "margin-mobile": "20px",
+                        "gutter": "16px",
+                        "safe-top": "env(safe-area-inset-top)",
+                        "safe-bottom": "env(safe-area-inset-bottom)"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter", "sans-serif"],
+                        "h2": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "label-bold": ["Inter", "sans-serif"],
+                        "h3": ["Inter", "sans-serif"],
+                        "h1": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-md": ["15px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "h2": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "display": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-bold": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "25px", "letterSpacing": "0em", "fontWeight": "600" }],
+                        "h1": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-[884px] flex flex-col relative overflow-hidden">
+<!-- Top App Bar (Modified for Chat Context) -->
+<header class="bg-white/70 backdrop-blur-xl flex items-center justify-between px-5 h-16 w-full docked full-width top-0 z-50 shadow-sm border-b border-surface-variant pt-safe-top shrink-0">
+<button aria-label="Go Back" class="flex items-center justify-center w-[44px] h-[44px] -ml-2 text-primary active:scale-95 duration-150 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back_ios</span>
+</button>
+<div class="flex flex-col items-center flex-1">
+<h1 class="font-h3 text-h3 text-on-surface truncate px-2">Vintage Leather Sofa</h1>
+<span class="font-label-sm text-label-sm text-outline flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Active Negotiation
+            </span>
+</div>
+<button aria-label="Item Details" class="flex items-center justify-center w-[44px] h-[44px] -mr-2 text-primary active:scale-95 duration-150 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">info</span>
+</button>
+</header>
+<!-- Chat Canvas -->
+<main class="flex-1 overflow-y-auto hide-scrollbar px-margin-mobile pt-stack-md pb-32 flex flex-col gap-stack-lg relative bg-surface-container-lowest">
+<!-- Timestamp -->
+<div class="flex justify-center mt-2">
+<span class="font-label-sm text-label-sm text-outline bg-surface-container px-3 py-1 rounded-full">Today 10:42 AM</span>
+</div>
+<!-- Seller Message (Received) -->
+<div class="flex gap-2 max-w-[85%] self-start">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 mt-auto bg-surface-container-high">
+<img alt="Seller profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a friendly looking man in his 30s with short hair and a subtle smile. He is wearing a simple casual shirt. The lighting is soft and natural, suggesting an outdoor daytime setting. The background is slightly blurred to focus on the face. This image is used as a generic profile avatar in a light, modern mobile application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJKQ_GbDWfQvHM-JymiOCCCXQ6x2aahceUAnpK17h2IgMmUMl5zbvOr71QdtCBiRdTEixgqh5DlbJZv_kUFJmzBPbgnfoboqwhiRtOZ6zR05QLTPm6cvtPe0KYlz5MbhDa058twtEbdEnnQCoC0jTN_v6OYnCvfa8DHz8AbYi079EjkJck0AIculhYgJ59mmRj_isZJL_0BvkEs5zWp7k1-8DIWtJax4bkSqhns4q5ItSdSITv9RQi_z3nCy34vsf_P-r9G1pd-zX_"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline ml-1">David S.</span>
+<div class="bg-surface-container-high text-on-surface rounded-2xl rounded-bl-sm p-4 font-body-md text-body-md shadow-sm">
+                    Hi there! I noticed you're interested in the sofa. The listed price is $450, but I'm open to reasonable offers if you can pick it up this weekend.
+                </div>
+</div>
+</div>
+<!-- Buyer Message (Sent) -->
+<div class="flex gap-2 max-w-[85%] self-end">
+<div class="flex flex-col gap-1 items-end">
+<div class="bg-primary text-on-primary rounded-2xl rounded-br-sm p-4 font-body-md text-body-md shadow-sm">
+                    Hello! Yes, it looks great. I can definitely rent a truck and pick it up on Saturday morning.
+                </div>
+<span class="font-label-sm text-label-sm text-outline mr-1 flex items-center gap-1">
+                    Read 10:45 AM <span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</span>
+</div>
+</div>
+<!-- Initial Offer Bubble (System-like) -->
+<div class="self-center w-full max-w-sm my-2">
+<div class="bg-surface-bright rounded-2xl p-4 border border-surface-variant shadow-[0_4px_20px_0px_rgba(0,0,0,0.05)] flex flex-col items-center text-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center mb-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_offer</span>
+</div>
+<h4 class="font-h3 text-h3 text-on-surface">You made an offer</h4>
+<p class="font-display text-display text-primary">$380</p>
+<span class="font-label-sm text-label-sm text-outline mt-1">Pending seller review</span>
+</div>
+</div>
+<!-- Seller Message (Received) -->
+<div class="flex gap-2 max-w-[85%] self-start mt-4">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 mt-auto bg-surface-container-high">
+<img alt="Seller profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a friendly looking man in his 30s with short hair and a subtle smile. He is wearing a simple casual shirt. The lighting is soft and natural, suggesting an outdoor daytime setting. The background is slightly blurred to focus on the face. This image is used as a generic profile avatar in a light, modern mobile application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh47CSJNtV1druenkEAKq51O6p6Z4QHMsGmtSKGDDeBkonwA2vMk_0s_JiPFJQBmHEzaxNsAlec4kiqCsfFKfQciOqxgHpJrBeX4OVtEZLzXHWko4o9-u9xTiXwnINtHI6V7rWJW1GTpYIDJoXnDGbNq98jVlaLCGnlCcHmW_yWc-vkpcYYtdiMp0C928KAyMw5etJUaljFhe64cQXKPUN8jgAqFD8vcZIrt4CRMv8aOSJVlAFdagOIM5J21Vjl17EJHwpMKTKQqzR"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline ml-1">David S.</span>
+<div class="bg-surface-container-high text-on-surface rounded-2xl rounded-bl-sm p-4 font-body-md text-body-md shadow-sm">
+                    Thanks for the offer. $380 is a bit low considering the condition. It's practically new. How about we meet in the middle?
+                </div>
+</div>
+</div>
+<!-- Counter Offer Bubble (System-like) -->
+<div class="self-center w-full max-w-sm my-2">
+<div class="bg-surface-container-low rounded-2xl p-5 border border-outline-variant shadow-[0_8px_30px_rgba(0,0,0,0.08)] flex flex-col items-center text-center gap-3 relative overflow-hidden">
+<!-- Highlight accent -->
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center mt-2">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">handshake</span>
+</div>
+<div class="flex flex-col gap-0">
+<h4 class="font-h2 text-h2 text-on-surface">Counter-Offer Received</h4>
+<span class="font-label-sm text-label-sm text-outline">From David S.</span>
+</div>
+<p class="font-display text-display text-on-surface font-bold mt-1">$415</p>
+<div class="w-full flex gap-3 mt-3">
+<button class="flex-1 bg-surface text-on-surface border border-outline-variant font-label-bold text-label-bold h-[44px] rounded-xl flex items-center justify-center active:scale-95 transition-transform">
+                        Decline
+                    </button>
+<!-- Accepting Action highlighted -->
+</div>
+</div>
+</div>
+<!-- Scroll anchor -->
+<div class="h-4 w-full shrink-0"></div>
+</main>
+<!-- Sticky Negotiation Action Area & Keyboard Input -->
+<div class="fixed bottom-0 left-0 w-full z-40 bg-surface-bright/90 backdrop-blur-2xl border-t border-surface-variant shadow-[0_-8px_30px_-10px_rgba(0,0,0,0.1)] flex flex-col pb-safe-bottom">
+<!-- Quick Action Panel (Negotiation Bar) -->
+<div class="px-margin-mobile py-3 flex gap-3 items-center justify-between border-b border-surface-variant/50">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">Current Offer</span>
+<span class="font-h3 text-h3 text-on-surface font-bold">$415</span>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-variant text-on-surface-variant font-label-bold text-label-bold h-[44px] px-4 rounded-full flex items-center justify-center active:scale-95 transition-transform whitespace-nowrap">
+                    Counter
+                </button>
+<button class="bg-primary text-on-primary font-label-bold text-label-bold h-[44px] px-6 rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform whitespace-nowrap">
+                    Accept Deal
+                </button>
+</div>
+</div>
+<!-- Standard Chat Input -->
+<div class="px-margin-mobile py-3 flex items-center gap-3">
+<button aria-label="Add attachment" class="w-[44px] h-[44px] shrink-0 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">add</span>
+</button>
+<div class="flex-1 bg-surface-container rounded-3xl min-h-[44px] flex items-center px-4 relative">
+<input class="w-full bg-transparent border-none focus:ring-0 p-0 font-body-md text-body-md text-on-surface placeholder:text-outline h-full py-3" placeholder="Type a message..." type="text"/>
+<button aria-label="Send message" class="w-[36px] h-[36px] absolute right-1 rounded-full text-primary flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>
